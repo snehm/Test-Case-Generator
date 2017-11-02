@@ -196,6 +196,10 @@ public class CreateStringGUI {
                 str += "A - Z : "+A2Z.isSelected()+"\n";
                 str += "0 - 9 : "+num.isSelected()+"\n";
                 str += "custom: "+custTxt.getText()+"\n";
+                str += "palindrome? : "+item1.isSelected()+"\n";
+                str += "random length : "+item2.isSelected()+"\n";
+                str += "Hide length : "+item3.isSelected()+"\n";
+                str += "Distinct chars? : "+item4.isSelected()+"\n";
                 arrOutput.setText(str);
             }
         });
