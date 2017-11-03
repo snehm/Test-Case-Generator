@@ -192,6 +192,9 @@ public class CreateStringGUI {
             public void actionPerformed(ActionEvent actionEvent) {
                 String str = "length : "+lengthTxt.getText()+"\n";
                 str += "Strings Seprated by : "+sepTxt.getText()+"\n";
+                str += "increasing : "+inc.isSelected()+"\n";
+                str += "decreasing : "+dec.isSelected()+"\n";
+                str += "random order: "+rand.isSelected()+"\n";
                 str += "a - z : "+a2z.isSelected()+"\n";
                 str += "A - Z : "+A2Z.isSelected()+"\n";
                 str += "0 - 9 : "+num.isSelected()+"\n";
