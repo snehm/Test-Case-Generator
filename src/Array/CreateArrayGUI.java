@@ -5,17 +5,49 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.*;
+import java.io.*;
 
 public class CreateArrayGUI {
 
     ArrayGeneration generateArray = new ArrayGeneration();
 
+    JPanel jpanArr = null;
+    JTextArea arrOutput = null;
+
+    public boolean isVisible()
+    {
+        return jpanArr.isVisible();
+    }
+
+    public boolean save()
+    {
+        try {
+            PrintWriter file = new PrintWriter(new FileWriter("input.txt"));
+            file.print(arrOutput.getText());
+            file.flush();
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    public void copy()
+    {
+        Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clpbrd.setContents(new StringSelection(arrOutput.getText()), null);
+    }
+
+
     public CreateArrayGUI(JPanel panelToAdd) {
-        JPanel jpanArr = new JPanel();
+        jpanArr = new JPanel();
         jpanArr.setLayout(new GridBagLayout());
         GridBagConstraints gbcJpanArr = new GridBagConstraints();
-        jpanArr.setBackground(Color.cyan);
+        //jpanArr.setBackground(Color.cyan);
 
         panelToAdd.add(jpanArr, "Array");
 
@@ -23,18 +55,18 @@ public class CreateArrayGUI {
         JPanel pan1 = new JPanel();
         gbcJpanArr.gridx = 0;
         gbcJpanArr.gridy = 0;
-        pan1.setBackground(Color.green);
+        //pan1.setBackground(Color.green);
         pan1.setPreferredSize(new Dimension(540,30));
         jpanArr.add(pan1,gbcJpanArr);
 
-        JLabel jlab = new JLabel("Array",JLabel.CENTER);
+        JLabel jlab = new JLabel("ARRAY",JLabel.CENTER);
         jlab.setPreferredSize(new Dimension(200,30));
         pan1.add(jlab);
 
         //empty pan
         JPanel panEmpty = new JPanel();
         panEmpty.setPreferredSize(new Dimension(200,5));
-        panEmpty.setBackground(Color.RED);
+        //panEmpty.setBackground(Color.RED);
         gbcJpanArr.gridy = 1;
         jpanArr.add(panEmpty,gbcJpanArr);
 
@@ -42,11 +74,12 @@ public class CreateArrayGUI {
         JPanel pan2 = new JPanel();
         gbcJpanArr.gridx = 0;
         gbcJpanArr.gridy = 2;
-        pan2.setBackground(Color.cyan);
+        //pan2.setBackground(Color.cyan);
         jpanArr.add(pan2, gbcJpanArr);
 
         pan2.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(1,1,1,1);
 
         JLabel countLabel = new JLabel("Total count : ", JLabel.RIGHT);
         countLabel.setPreferredSize(new Dimension(120,30));
@@ -116,24 +149,24 @@ public class CreateArrayGUI {
         //panel3
         JPanel pan3 = new JPanel();
         pan3.setLayout(new GridBagLayout());
-        pan3.setBackground(Color.cyan);
+        //pan3.setBackground(Color.cyan);
         gbcJpanArr.gridx = 0;
         gbcJpanArr.gridy = 3;
         jpanArr.add(pan3, gbcJpanArr);
 
         JRadioButton OOnly = new JRadioButton("ODD ONLY");
         OOnly.setPreferredSize(new Dimension(120,30));
-        OOnly.setBackground(Color.cyan);
+        //OOnly.setBackground(Color.cyan);
         JRadioButton EOnly = new JRadioButton("EVEN ONLY");
         EOnly.setPreferredSize(new Dimension(120,30));
-        EOnly.setBackground(Color.cyan);
+        //EOnly.setBackground(Color.cyan);
         JRadioButton Any = new JRadioButton("ANY");
         Any.setPreferredSize(new Dimension(70,30));
-        Any.setBackground(Color.cyan);
+        //Any.setBackground(Color.cyan);
         Any.setSelected(true);
         JRadioButton POnly = new JRadioButton("PRIME ONLY");
         POnly.setPreferredSize(new Dimension(120,30));
-        POnly.setBackground(Color.cyan);
+        //POnly.setBackground(Color.cyan);
         ButtonGroup bg1 = new ButtonGroup();
         bg1.add(Any);
         bg1.add(POnly);
@@ -159,9 +192,9 @@ public class CreateArrayGUI {
         inc.setPreferredSize(new Dimension(120,30));
         dec.setPreferredSize(new Dimension(120,30));
         rand.setPreferredSize(new Dimension(120,30));
-        inc.setBackground(Color.cyan);
-        dec.setBackground(Color.cyan);
-        rand.setBackground(Color.cyan);
+        //inc.setBackground(Color.cyan);
+        //dec.setBackground(Color.cyan);
+        //rand.setBackground(Color.cyan);
         ButtonGroup bg2 = new ButtonGroup();
         bg2.add(inc);
         bg2.add(dec);
@@ -202,12 +235,12 @@ public class CreateArrayGUI {
 
         //panel5
         JPanel pan5 = new JPanel();
-        pan5.setBackground(Color.BLACK);
+        //pan5.setBackground(Color.BLACK);
         pan5.setPreferredSize(new Dimension(560,300));
         gbcJpanArr.gridy = 5;
         jpanArr.add(pan5,gbcJpanArr);
 
-        JTextArea arrOutput = new JTextArea();
+        arrOutput = new JTextArea();
         generateArray.setOutputTxt(arrOutput);
         arrOutput.setText("");
         JScrollPane jsp = new JScrollPane(arrOutput);

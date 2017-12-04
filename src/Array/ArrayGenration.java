@@ -41,7 +41,8 @@ class ArrayGeneration
         Boolean mtc = Boolean.parseBoolean(x[15]);
         Boolean dis = Boolean.parseBoolean(x[16]);
         Random rand = new Random ();
-
+        if(stc==true)
+            temp.append(rep + "\n");
         ArrayList <Integer> o = new ArrayList <Integer> ();
         ArrayList <Integer> e = new ArrayList <Integer> ();
         ArrayList <Integer> a = new ArrayList <Integer> ();
@@ -160,12 +161,10 @@ class ArrayGeneration
                 }
                 temp.append(Integer.toString(output[i]));
             }
-            if(rsb.equals("\n")&&(jj!=rep-1))
-                temp.append("\n");
-            if(!rsb.equals("\n")&&(jj!=rep-1))
-            {
+            if(!rsb.equals(""))
                 temp.append("\n"+rsb+"\n");
-            }
+            else
+                temp.append("\n");
         }
         temp.append("\n");
         res = temp.toString();

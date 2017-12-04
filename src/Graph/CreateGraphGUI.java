@@ -5,17 +5,49 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.*;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 public class CreateGraphGUI {
 
     GraphGeneration gout = new GraphGeneration();
+    JPanel jpanArr = null;
+    JTextArea arrOutput = null;
+
+    public boolean isVisible()
+    {
+        return jpanArr.isVisible();
+    }
+
+    public boolean save()
+    {
+        try {
+            PrintWriter file = new PrintWriter(new FileWriter("input.txt"));
+            file.print(arrOutput.getText());
+            file.flush();
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    public void copy()
+    {
+        Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clpbrd.setContents(new StringSelection(arrOutput.getText()), null);
+    }
+
 
     public CreateGraphGUI(JPanel panelToAdd) {
-        JPanel jpanArr = new JPanel();
+        jpanArr = new JPanel();
         jpanArr.setLayout(new GridBagLayout());
         GridBagConstraints gbcJpanArr = new GridBagConstraints();
-        jpanArr.setBackground(Color.cyan);
+        //jpanArr.setBackground(Color.cyan);
 
         panelToAdd.add(jpanArr, "Graph");
 
@@ -23,18 +55,18 @@ public class CreateGraphGUI {
         JPanel pan1 = new JPanel();
         gbcJpanArr.gridx = 0;
         gbcJpanArr.gridy = 0;
-        pan1.setBackground(Color.green);
+        //pan1.setBackground(Color.green);
         pan1.setPreferredSize(new Dimension(540,30));
         jpanArr.add(pan1,gbcJpanArr);
 
-        JLabel jlab = new JLabel("Graph",JLabel.CENTER);
+        JLabel jlab = new JLabel("GRAPH",JLabel.CENTER);
         jlab.setPreferredSize(new Dimension(200,30));
         pan1.add(jlab);
 
         //empty pan
         JPanel panEmpty = new JPanel();
         panEmpty.setPreferredSize(new Dimension(200,5));
-        panEmpty.setBackground(Color.RED);
+        //panEmpty.setBackground(Color.RED);
         gbcJpanArr.gridy = 1;
         jpanArr.add(panEmpty,gbcJpanArr);
 
@@ -43,11 +75,12 @@ public class CreateGraphGUI {
         JPanel pan2 = new JPanel();
         gbcJpanArr.gridx = 0;
         gbcJpanArr.gridy = 2;
-        pan2.setBackground(Color.cyan);
+        //pan2.setBackground(Color.cyan);
         jpanArr.add(pan2, gbcJpanArr);
 
         pan2.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(1,1,1,1);
 
         gbc.gridy = 0;
         gbc.gridx = 0;
@@ -89,7 +122,7 @@ public class CreateGraphGUI {
 
         JCheckBox weighted = new JCheckBox("weighted graph?");
         weighted.setPreferredSize(new Dimension(200, 30));
-        weighted.setBackground(Color.cyan);
+        //weighted.setBackground(Color.cyan);
         gbc.gridy = 2;
         gbc.gridx = 0;
         gbc.gridwidth = 2;
@@ -147,17 +180,17 @@ public class CreateGraphGUI {
         //panel3
         JPanel pan3 = new JPanel();
         pan3.setLayout(new GridBagLayout());
-        pan3.setBackground(Color.cyan);
+        //pan3.setBackground(Color.cyan);
         gbcJpanArr.gridx = 0;
         gbcJpanArr.gridy = 3;
         jpanArr.add(pan3, gbcJpanArr);
 
         JCheckBox selfLoop = new JCheckBox("Self loop");
         selfLoop.setPreferredSize(new Dimension(120,30));
-        selfLoop.setBackground(Color.cyan);
+        //selfLoop.setBackground(Color.cyan);
         JCheckBox cycle = new JCheckBox("Cycles");
         cycle.setPreferredSize(new Dimension(100,30));
-        cycle.setBackground(Color.cyan);
+        //cycle.setBackground(Color.cyan);
         cycle.setSelected(true);
 
         selfLoop.addItemListener(new ItemListener() {
@@ -170,10 +203,10 @@ public class CreateGraphGUI {
 
         JCheckBox multiEdges = new JCheckBox("Multiple edge");
         multiEdges.setPreferredSize(new Dimension(130,30));
-        multiEdges.setBackground(Color.cyan);
+        //multiEdges.setBackground(Color.cyan);
         JCheckBox directed = new JCheckBox("Directed graph");
         directed.setPreferredSize(new Dimension(150,30));
-        directed.setBackground(Color.cyan);
+        //directed.setBackground(Color.cyan);
         gbc.gridx = 0;
         gbc.gridy = 0;
         pan3.add(multiEdges);
@@ -212,12 +245,12 @@ public class CreateGraphGUI {
 
         //panel5
         JPanel pan5 = new JPanel();
-        pan5.setBackground(Color.BLACK);
+        //pan5.setBackground(Color.BLACK);
         pan5.setPreferredSize(new Dimension(560,300));
         gbcJpanArr.gridy = 5;
         jpanArr.add(pan5,gbcJpanArr);
 
-        JTextArea arrOutput = new JTextArea();
+        arrOutput = new JTextArea();
         gout.setOutputTxt(arrOutput);
         arrOutput.setText("");
         JScrollPane jsp = new JScrollPane(arrOutput);

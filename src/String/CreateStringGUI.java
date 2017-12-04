@@ -6,14 +6,47 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
+import java.awt.datatransfer.*;
+import java.awt.Toolkit;
 
 public class CreateStringGUI {
 
+    JTextArea arrOutput = null;
+    JPanel jpanArr = null;
+
+    public boolean isVisible()
+    {
+        return jpanArr.isVisible();
+    }
+
+    public boolean save()
+    {
+        try {
+            PrintWriter file = new PrintWriter(new FileWriter("input.txt"));
+            file.print(arrOutput.getText());
+            file.flush();
+            return true;
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    public void copy()
+    {
+        Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clpbrd.setContents(new StringSelection(arrOutput.getText()), null);
+    }
+
     public CreateStringGUI(JPanel panelToAdd){
-        JPanel jpanArr = new JPanel();
+        jpanArr = new JPanel();
         jpanArr.setLayout(new GridBagLayout());
         GridBagConstraints gbcJpanArr = new GridBagConstraints();
-        jpanArr.setBackground(Color.cyan);
+        //jpanArr.setBackground(Color.cyan);
 
         panelToAdd.add(jpanArr, "String");
 
@@ -21,18 +54,18 @@ public class CreateStringGUI {
         JPanel pan1 = new JPanel();
         gbcJpanArr.gridx = 0;
         gbcJpanArr.gridy = 0;
-        pan1.setBackground(Color.green);
+        //pan1.setBackground(Color.green);
         pan1.setPreferredSize(new Dimension(540,30));
         jpanArr.add(pan1,gbcJpanArr);
 
-        JLabel jlab = new JLabel("String",JLabel.CENTER);
+        JLabel jlab = new JLabel("STRING",JLabel.CENTER);
         jlab.setPreferredSize(new Dimension(200,30));
         pan1.add(jlab);
 
         //empty pan
         JPanel panEmpty = new JPanel();
-        panEmpty.setPreferredSize(new Dimension(200,5));
-        panEmpty.setBackground(Color.RED);
+        panEmpty.setPreferredSize(new Dimension(200,25));
+        //panEmpty.setBackground(Color.RED);
         gbcJpanArr.gridy = 1;
         jpanArr.add(panEmpty,gbcJpanArr);
 
@@ -40,11 +73,12 @@ public class CreateStringGUI {
         JPanel pan2 = new JPanel();
         gbcJpanArr.gridx = 0;
         gbcJpanArr.gridy = 2;
-        pan2.setBackground(Color.cyan);
+        //pan2.setBackground(Color.cyan);
         jpanArr.add(pan2, gbcJpanArr);
 
         pan2.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(1,1,1,1);
 
         JLabel length = new JLabel("Length : ", JLabel.RIGHT);
         length.setPreferredSize(new Dimension(120,30));
@@ -67,7 +101,7 @@ public class CreateStringGUI {
         pan2.add(countTxt, gbc);
 
         JLabel sepLabel = new JLabel("Strings separated by:",  JLabel.RIGHT);
-        JTextField sepTxt = new JTextField(" ");
+        JTextField sepTxt = new JTextField("");
         sepLabel.setPreferredSize(new Dimension(180,30));
         sepTxt.setPreferredSize(new Dimension(120,30));
         gbc.gridx = 2;
@@ -80,7 +114,7 @@ public class CreateStringGUI {
         //panel3
         JPanel pan3 = new JPanel();
         pan3.setLayout(new GridBagLayout());
-        pan3.setBackground(Color.cyan);
+        //pan3.setBackground(Color.cyan);
         gbcJpanArr.gridx = 0;
         gbcJpanArr.gridy = 3;
         jpanArr.add(pan3, gbcJpanArr);
@@ -94,9 +128,9 @@ public class CreateStringGUI {
         inc.setPreferredSize(new Dimension(120,30));
         dec.setPreferredSize(new Dimension(120,30));
         rand.setPreferredSize(new Dimension(120,30));
-        inc.setBackground(Color.cyan);
-        dec.setBackground(Color.cyan);
-        rand.setBackground(Color.cyan);
+        //inc.setBackground(Color.cyan);
+        //dec.setBackground(Color.cyan);
+        //rand.setBackground(Color.cyan);
         ButtonGroup bg2 = new ButtonGroup();
         bg2.add(inc);
         bg2.add(dec);
@@ -115,7 +149,7 @@ public class CreateStringGUI {
         JPanel pan4 = new JPanel();
         gbcJpanArr.gridx = 0;
         gbcJpanArr.gridy = 4;
-        pan2.setBackground(Color.cyan);
+        //pan2.setBackground(Color.cyan);
         jpanArr.add(pan4, gbcJpanArr);
 
 
@@ -157,14 +191,14 @@ public class CreateStringGUI {
         JMenuBar menuBar = new JMenuBar();
         JMenu more = new JMenu("Advance");
 
-        JCheckBox item1 = new JCheckBox("Palindrome strings");
         JCheckBox item2 = new JCheckBox("Random length ");
         JCheckBox item3 = new JCheckBox("Hide length ");
         JCheckBox item4 = new JCheckBox("Distinct chars ");
-        more.add(item1);
+        JCheckBox item5 = new JCheckBox("Show total test cases");
         more.add(item2);
         more.add(item3);
         more.add(item4);
+        more.add(item5);
         menuBar.add(more);
         menuBar.setPreferredSize(new Dimension(80,30));
 
@@ -175,12 +209,12 @@ public class CreateStringGUI {
 
         //panel6
         JPanel pan6 = new JPanel();
-        pan6.setBackground(Color.BLACK);
+        //pan6.setBackground(Color.BLACK);
         pan6.setPreferredSize(new Dimension(560,300));
         gbcJpanArr.gridy = 6;
         jpanArr.add(pan6,gbcJpanArr);
 
-        JTextArea arrOutput = new JTextArea();
+        arrOutput = new JTextArea();
         arrOutput.setText("");
         JScrollPane jsp = new JScrollPane(arrOutput);
         jsp.setPreferredSize(new Dimension(560,300));
@@ -190,7 +224,7 @@ public class CreateStringGUI {
         generate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                String str = "length : "+lengthTxt.getText()+"\n";
+                /*               String str = "length : "+lengthTxt.getText()+"\n";
                 str += "Strings Seprated by : "+sepTxt.getText()+"\n";
                 str += "increasing : "+inc.isSelected()+"\n";
                 str += "decreasing : "+dec.isSelected()+"\n";
@@ -199,11 +233,15 @@ public class CreateStringGUI {
                 str += "A - Z : "+A2Z.isSelected()+"\n";
                 str += "0 - 9 : "+num.isSelected()+"\n";
                 str += "custom: "+custTxt.getText()+"\n";
-                str += "palindrome? : "+item1.isSelected()+"\n";
                 str += "random length : "+item2.isSelected()+"\n";
                 str += "Hide length : "+item3.isSelected()+"\n";
                 str += "Distinct chars? : "+item4.isSelected()+"\n";
                 arrOutput.setText(str);
+*/
+                String input[] = {""+A2Z.isSelected(), ""+a2z.isSelected(), ""+num.isSelected(),""+ lengthTxt.getText(), ""+item4.isSelected(),""+ inc.isSelected(), ""+dec.isSelected() ,""+ rand.isSelected(), ""+countTxt.getText() ,""+item5.isSelected() ,""+ sepTxt.getText(),""+ item3.isSelected() ,""+item2.isSelected(), ""+ custTxt.getText() };
+               StringGeneration generator = new StringGeneration();
+               generator.setOutputTxt(arrOutput);
+               generator.generate(input);
             }
         });
     }
