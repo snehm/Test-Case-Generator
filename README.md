@@ -11,9 +11,10 @@ JRE
 ```
 <h3>Installing</h3>
 
-```
-Run the JAR File
-```
++ [Download](https://sourceforge.net/projects/test-case-generator-tool/) JAR file
++ Run the JAR File
++ For more information follow this [link](http://www.bambootree.in/test-case-generator.html)
+
 <h2>Built With</h2>
 
 ```
