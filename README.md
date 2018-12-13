@@ -12,7 +12,19 @@ JRE
 <h3>Installing</h3>
 
 + [Download](https://sourceforge.net/projects/test-case-generator-tool/) and run the JAR file
-+ For more information follow this [link](http://www.bambootree.in/test-case-generator.html)
+
++ Windows and Macintosh<br>
+To run this tool on windows, you will need JAVA JDK 8 or later version installed on your host machine. Download JAVA JDK 8 or above from here, if not already installed.  
+Download Test case generator and double click on Test case generator tool  
+
++ Linux/ Ubuntu  
+To run this tool on Ubuntu, you will need JAVA JDK 8 or later version installed on your host machine.  
+      To insatll JAVA JDK 8 on LINUX run following commands on terminal  
+             sudo add-apt-repository ppa:webupd8team/java  
+             sudo apt-get update  
+             sudo apt-get install oracle-java8-installer  
+Download Test case generator, right click on the package, select properties, than select permissions tab and check Execute checkbox.  
+Double click on package  
 
 <h2>Built With</h2>
 
