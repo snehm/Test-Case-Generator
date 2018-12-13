@@ -24,37 +24,37 @@ Swing
 
 <h3> Strings </h3>
 
-![](http://betaplay.xyz/string.jpg "String")
+![](src/1.jpg "String")
 
 By selecting strings, here you can find a number of tools to generate random strings of your preferences. You can generate any number of strings of any size with repeat and total count text fields as well as manage as how they are separated. Sort the characters in your desired order. You can select the various combinations of input cases such as strings containing A-Z, 0-9,a-z etc. Choose from our advanced panel for negative outputs, distinct characters in the string and other options such as show total number of string, hide each strings length and random length of strings. 
 
 <h3> Matrix </h3>
 
-![](http://betaplay.xyz/matrix.jpg "Marix")
+![](src/2.jpg "Marix")
 
 By selecting matrix, here you can find a number of tools to generate random matrices of your preferences. You can generate any number of matrix of any dimension with repeat and total count text fields as well as manage as how they are separated. Choose from our advanced panel for negative outputs, distinct elements in a matrix and other options such as show total number of matrix, hide each matrix dimension and make each column wise arranged. 
 
 <h3> Graphs </h3>
 
-![](http://betaplay.xyz/graph.jpg "Graphs")
+![](src/3.jpg "Graphs")
 
 By selecting graphs, here you can find a number of tools to generate random graphs of your preferences. You can generate any number of graphs with any no of vertices and edges with the repeat, vertex and edges text field. You can select if the graph is weighted (and specify weight ranges) or not by checking the weighted graph option. Advanced options include Multiple Edges, self-loop, cycles and directed graph.    
 
 <h3> Arrays </h3>
 
-![](http://betaplay.xyz/array.jpg "Arrays")
+![](src/4.jpg "Arrays")
 
 By selecting arrays, here you can find a number of tools to generate random arrays of your preferences. You can generate any number of arrays of any size with repeat and total count text fields as well as manage as how they are separated. Choose from our advanced panel for negative outputs, distinct elements in an array and other options such as show total number of arrays  , hide each array length and make each array of random length. 	
 
 <h3> Integer Array Palindromes </h3>
 
-![](http://betaplay.xyz/integer_palindrome.jpg "Integer Palindrome")
+![](src/5.jpg "Integer Palindrome")
  
 By selecting palindromes, here you can find a number of tools to generate random strings and integer palindromes of your preferences. You can generate any number of integer array palindromes of any size with repeat and total count text fields as well as manage as how they are separated. You can specify the ranges with min and max fields. Choose from our advanced panel for options such as show total number of arrays, hide each arrays length and random length of arrays.
 
 <h3> String Palindromes </h3>
 
-![](http://betaplay.xyz/string_palindrome.jpg "String Palindrome")
+![](src/6.jpg "String Palindrome")
  
 By selecting palindromes, here you can find a number of tools to generate random strings and integer palindromes of your preferences. You can generate any number of strings palindromes of any size with repeat and total count text fields as well as manage as how they are separated. You can select the various combinations of input cases such as strings containing A-Z, 0-9, a-z etc. Choose from our advanced panel for options such as show total number of string, hide each strings length and random length of strings palindromes.
 
