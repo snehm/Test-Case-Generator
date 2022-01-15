@@ -51,23 +51,28 @@ class MatrixGeneration
         catch(Exception e)
         {
             res = "Enter valid input";
+            return;
         }
         int tot = tor*toc;
         if(max<=min)
         {
             res = "Max cannot be smaller or equal to than minimum value.";
+            return;
         }
         if(rep==0)
         {
             res = "Total number of test cases can not be 0.";
+            return;
         }
         if(toc==0)
         {
             res = "Size of columns can not be 0.";
+            return;
         }
         if(tor==0)
         {
             res = "Size of rows can not be 0.";
+            return;
         }
         if(stc==true)
         {
@@ -90,6 +95,11 @@ class MatrixGeneration
         ArrayList <Integer> e = new ArrayList <Integer> ();
         ArrayList <Integer> a = new ArrayList <Integer> ();
         ArrayList <Integer> p = new ArrayList <Integer> ();
+
+        if (pri && (min < 0 || max < 0)) {
+            out.setText("Error. Prime cannot lie in negative range.");
+            return;
+        }
 
         for(i = min ; i <= max ; i++)
         {

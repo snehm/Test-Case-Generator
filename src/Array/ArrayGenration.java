@@ -4,8 +4,6 @@ package Array;
 
 import javax.swing.*;
 import java.util.*;
-import java.math.*;
-import java.io.*;
 
 class ArrayGeneration
 {
@@ -27,12 +25,24 @@ class ArrayGeneration
         String osb = x[1] ;
         int min = Integer.parseInt(x[2]);
         int max = Integer.parseInt(x[3]);
+
+        if (max < min) {
+            out.setText("Error. Max cannot be smaller than min.");
+            return;
+        }
+
         int rep = Integer.parseInt(x[4]);
         String rsb = x[5] ;
         Boolean odd = Boolean.parseBoolean(x[6]);
         Boolean eve = Boolean.parseBoolean(x[7]);
         Boolean any = Boolean.parseBoolean(x[8]);
         Boolean pri = Boolean.parseBoolean(x[9]);
+
+        if (pri && (min < 0 || max < 0)) {
+            out.setText("Error. Prime cannot lie in negative range.");
+            return;
+        }
+
         Boolean inc = Boolean.parseBoolean(x[10]);
         Boolean dec = Boolean.parseBoolean(x[11]);
         Boolean ran = Boolean.parseBoolean(x[12]);
@@ -56,23 +66,44 @@ class ArrayGeneration
                 o.add(i);
         }
 
-        boolean prime[] = new boolean[max+1];
-        for(i=0;i<max;i++)
-            prime[i] = false;
+        if(min >= 0 && max >= 0) {
+            boolean prime[] = new boolean[max+1];
+            for(i=0;i<max;i++)
+                prime[i] = false;
 
-        for(int pp = 2; pp*pp <=max; pp++)
-        {
-            if(prime[pp] == false)
+            for(int pp = 2; pp*pp <=max; pp++)
             {
-                for(i = pp*2; i <= max; i+=pp)
-                    prime[i] = true;
+                if(prime[pp] == false)
+                {
+                    for(i = pp*2; i <= max; i+=pp)
+                        prime[i] = true;
+                }
+            }
+            prime[0]=true;
+            prime[1]=true;
+            for (int ppp=min; ppp<=max; ppp++)
+                if (prime[ppp]==false)
+                    p.add(ppp);
+        }
+
+        if (dis) {
+            if(odd && o.size()<tot) {
+                out.setText("Number of possible outputs is less than the total size of array.");
+                return;
+            }
+            if(eve && e.size()<tot) {
+                out.setText("Number of possible outputs is less than the total size of array.");
+                return;
+            }
+            if(any && a.size()<tot) {
+                out.setText("Number of possible outputs is less than the total size of matrix. Please change the dimension.");
+                return;
+            }
+            if(pri && p.size()<tot) {
+                out.setText("Number of possible outputs is less than the total size of matrix. Please change the dimension.");
+                return;
             }
         }
-        prime[0]=true;
-        prime[1]=true;
-        for (int ppp=min; ppp<=max; ppp++)
-            if (prime[ppp]==false)
-                p.add(ppp);
 
         for(int jj = 0 ; jj < rep ; jj++)
         {
@@ -141,26 +172,29 @@ class ArrayGeneration
             if(dec==true)
             {
                 Arrays.sort(output);
-                for(i=0;i<total/2;i++)
+                int start = 0, end = total-1;
+                while (start < end)
                 {
-                    int xxxxx = output[i];
-                    output[i] = output[total-1-i];
-                    output[total-1-i] = xxxxx;
+                    int reverseTemp = output[start];
+                    output[start] = output[end];
+                    output[end] = reverseTemp;
+                    start++;
+                    end--;
                 }
             }
 
-            else
+            if(htc==false)
+                temp.append(total+"\n");
+
+            for(i = 0 ; i<total-1 ; i++)
             {
-                if(htc==false)
-                    temp.append(total+"\n");
-                for(i = 0 ; i<total-1 ; i++)
-                {
-                    String z = Integer.toString(output[i]);
-                    z = z + osb ;
-                    temp.append(z);
-                }
-                temp.append(Integer.toString(output[i]));
+                String z = Integer.toString(output[i]);
+                z = z + osb ;
+                temp.append(z);
             }
+
+            temp.append(Integer.toString(output[i]));
+
             if(!rsb.equals(""))
                 temp.append("\n"+rsb+"\n");
             else
