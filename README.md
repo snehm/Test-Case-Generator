@@ -1,5 +1,5 @@
 <h1>Test Case Generator</h1>
-Test Case Generator is opensource tool to generate test cases to use in competitive programing. The tool supports test cases for Array, String, Matrix, Graph and Palindrome.
+Test Case Generator is opensource and easy to use gui based tool to generate test cases to use in competitive programing. The tool supports test cases for Array, String, Matrix, Graph and Palindrome.
 <br/><br/>
 Take a look at <a href="#howto">How to use it</a> section to learn more about the its feature.
 <h2>Getting Started</h2>
