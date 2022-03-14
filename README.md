@@ -1,7 +1,7 @@
 <h1>Test Case Generator</h1>
 Test Case Generator is opensource tool to generate test cases to use in competitive programing. The tool supports test cases for Array, String, Matrix, Graph and Palindrome.
 <br/><br/>
-Take a look at [How to use it](#howto) to learn more about the its feature.
+Take a look at <a href="#howto">How to use it</a> section to learn more about the its feature.
 <h2>Getting Started</h2>
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
@@ -34,9 +34,7 @@ Double click on package
 Swing
 ```
 
-<h2> <a name="howto">
-   How to use it ?
-</a></h2>
+<h2 id="howto">How to use it ?</h2>
 
 <h3> Strings </h3>
 
