@@ -85,4 +85,3 @@ snehmishra555@gmail.com
 [Sneh Kumar Mishra](https://github.com/snehm/)
 <h2>License</h2>
 This project is licensed under the MIT License - see the LICENSE.md file for details
-<meta name="google-site-verification" content="AUsuRnVESgohGReULNg3T7Z8VOUw8SkFzJg4ZF7lw74" />
