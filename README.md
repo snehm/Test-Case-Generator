@@ -2,6 +2,8 @@
 Test Case Generator (TCG) is opensource and easy to use gui based tool to generate test cases to use in competitive programing. The tool supports test cases for Array, String, Matrix, Graph and Palindrome.
 <br/><br/>
 Take a look at [How to use TCG](#how-to-use-tcg) section to learn more about the its feature.
+<br/><br/>
+If you like the tool, dont forget to give a ⭐ to **Test case generator (TCG)**
 ## Installation
 
 + To run this tool, you will need JAVA JDK 8 or later version installed on your host machine. Download JAVA JDK 8 or above from <a href="https://www.oracle.com/java/technologies/downloads/">here</a>, if not already installed.
